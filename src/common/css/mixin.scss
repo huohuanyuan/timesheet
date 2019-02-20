@@ -1,0 +1,147 @@
+//表单label
+@mixin label() {
+    float: left;
+    width: 65px;
+    padding: 9px 7px;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1;
+    color: #495060;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #dddee1;
+    border-right: 0;
+    border-radius: 6px;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+//日期选择
+@mixin datapick-label() {
+    width: 100%;
+    label {
+     @include label();
+    }
+    .ivu-date-picker {
+      float: left;
+      width: calc(100% - 65px);
+      .ivu-input {
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+      }
+    }
+}
+//下拉框选择
+@mixin select-label() {
+    width: 100%;
+    label {
+        @include label();
+    }
+    .ivu-select {
+      float: left;
+      width: calc(100% - 65px);
+      .ivu-select-selection {
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+      }
+    }
+ 
+}
+//级联选择
+@mixin cascader-label() {
+    width: 100%;
+    label {
+        @include label();
+    }
+    .ivu-cascader {
+        float: left;
+        width: calc(100% - 65px);
+        .ivu-input{
+            border-bottom-left-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+        }
+    }
+ 
+
+}
+//自定义input lable error样式
+@mixin error-label() {
+    .ivu-form-item-error {
+        label {
+          background-color: #fff;
+          border: 1px solid #ed3f14;
+          border-right: 0;
+        }
+      }
+}
+
+//数字选择框
+@mixin inputnumber-label() {
+    width: 100%;
+    label {
+        @include label();
+    }
+    .ivu-input-number{
+        float: left;
+        width: calc(100% - 65px);
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+ 
+    }
+}
+//无左边radius
+@mixin no-radius(){
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+//form表单样式（label带边框）
+@mixin form-label-style() {
+    .ivu-form-item-label{
+        @include label()
+      }
+    .ivu-form-item-content{
+        top:-1px;
+    }
+    input,.ivu-select-selection,.ivu-input-number{
+        @include no-radius()
+    }
+
+    @include  error-label
+
+}
+
+//清除浮动
+@mixin clear-both {
+    &:after{
+        display: block;
+        content:"";
+        clear: both;
+    }
+}
+// 背景图片
+@mixin bg-image($url){
+    background-image: url($url + "@2x.png");
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+      background-image: url($url + "@3x.png");
+    }
+  }
+  
+  
+  // 不换行
+  @mixin no-wrap(){
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  // 扩展点击区域
+@mixin extend-click(){
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+    }
+  
+  }
